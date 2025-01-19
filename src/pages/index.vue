@@ -31,7 +31,6 @@
       </v-treeview>
     </v-navigation-drawer>
 
-    <!-- Right Drawer (File Details) -->
     <v-navigation-drawer
       v-model="drawerRight"
       location="right"
@@ -42,9 +41,12 @@
         <v-card-title>File Details</v-card-title>
         <v-divider></v-divider>
         <v-card-text>
-          <!-- Add content for file details here -->
           <v-card-subtitle v-if="activeFile">Type</v-card-subtitle>
           <v-card-subtitle v-if="activeFile">{{ activeFile.type === 'file' ? `file/${getFileExtension(activeFile.title)}` : 'folder' }}</v-card-subtitle>
+        </v-card-text>
+        <v-card-text>
+          <v-card-subtitle v-if="activeFile">Location</v-card-subtitle>
+          <v-card-subtitle v-if="activeFile">{{ activeFile.path }}</v-card-subtitle>
         </v-card-text>
         <v-card-text>
           <v-card-subtitle v-if="activeFile">Created At</v-card-subtitle>
@@ -95,8 +97,8 @@ import { ref } from 'vue'
 import axios from 'axios'
 
 const drawer = ref(false)
-const drawerRight = ref(false)  // Right Drawer for file details
-const activeFile = ref(null)  // Store the active file's data
+const drawerRight = ref(false) 
+const activeFile = ref(null)
 
 const initiallyOpen = ref(['public'])
 const files = ref({
@@ -164,23 +166,26 @@ onBeforeMount(async () => {
 
 async function handleTreeItemActive(activeItems) {
   listItems.value = [];
+  drawerRight.value = false
   try {
     const response = await axios.get(`http://localhost:3000/api/v1/items?parentId=${activeItems[0]}`)
     if (response.data.status ==='success') {
-      console.log("response: ", response.data.data)
+      if (response.data.data.length < 1) {
+        const response = await axios.get(`http://localhost:3000/api/v1/items/${activeItems[0]}`)
+      }
       listItems.value.push(...response.data.data)
     } else {
       console.error('API returned an error:', response.data)
     }
   } catch (error) {
-    
+    console.error('API returned an error:', error)
   }
 }
 
 function handleRowDoubleClick(item) {
   if (item.type === 'file') {
-    activeFile.value = item;  // Set the active file
-    drawerRight.value = true;  // Open the right drawer
+    activeFile.value = item;
+    drawerRight.value = true;
   } else if (item.type === 'folder') {
     handleTreeItemActive([item.id])
   }
