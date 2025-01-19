@@ -1,79 +1,99 @@
-# Vuetify (Default)
+# Windows Explorer Web App
 
-This is the official scaffolding tool for Vuetify, designed to give you a head start in building your new Vuetify application. It sets up a base template with all the necessary configurations and standard directory structure, enabling you to begin development without the hassle of setting up the project from scratch.
+## Overview
 
-## ❗️ Important Links
+The **Windows Explorer Web App** is a web-based application designed to replicate the functionality of a file explorer in a browser environment. This project is built with modern technologies such as **Bun**, **Prisma**, **Elysia**, and **Docker**.
 
-- 📄 [Docs](https://vuetifyjs.com/)
-- 🚨 [Issues](https://issues.vuetifyjs.com/)
-- 🏬 [Store](https://store.vuetifyjs.com/)
-- 🎮 [Playground](https://play.vuetifyjs.com/)
-- 💬 [Discord](https://community.vuetifyjs.com)
+## Features
 
-## 💿 Install
+- Lightweight and fast execution with Bun.
+- Database integration using Prisma and PostgreSQL.
+- Swagger documentation for API endpoints.
+- Enhanced logging with Winston.
+- Input validation using Zod.
+- CORS and error handling with Elysia middleware.
 
-Set up your project using your preferred package manager. Use the corresponding command to install the dependencies:
+## Installation
 
-| Package Manager                                                | Command        |
-|---------------------------------------------------------------|----------------|
-| [yarn](https://yarnpkg.com/getting-started)                   | `yarn install` |
-| [npm](https://docs.npmjs.com/cli/v7/commands/npm-install)     | `npm install`  |
-| [pnpm](https://pnpm.io/installation)                          | `pnpm install` |
-| [bun](https://bun.sh/#getting-started)                        | `bun install`  |
+### Prerequisites
 
-After completing the installation, your environment is ready for Vuetify development.
+- [Bun](https://bun.sh/) installed on your system.
+- [Docker](https://www.docker.com/) installed and running.
+- A `.env` file with the required environment variables for the database setup.
 
-## ✨ Features
+### Steps
 
-- 🖼️ **Optimized Front-End Stack**: Leverage the latest Vue 3 and Vuetify 3 for a modern, reactive UI development experience. [Vue 3](https://v3.vuejs.org/) | [Vuetify 3](https://vuetifyjs.com/en/)
-- 🗃️ **State Management**: Integrated with [Pinia](https://pinia.vuejs.org/), the intuitive, modular state management solution for Vue.
-- 🚦 **Routing and Layouts**: Utilizes Vue Router for SPA navigation and vite-plugin-vue-layouts for organizing Vue file layouts. [Vue Router](https://router.vuejs.org/) | [vite-plugin-vue-layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
-- ⚡ **Next-Gen Tooling**: Powered by Vite, experience fast cold starts and instant HMR (Hot Module Replacement). [Vite](https://vitejs.dev/)
-- 🧩 **Automated Component Importing**: Streamline your workflow with unplugin-vue-components, automatically importing components as you use them. [unplugin-vue-components](https://github.com/antfu/unplugin-vue-components)
+1. Clone the repository:
+   ```bash
+   git clone [text](https://github.com/rizkiwhy/vue-windows-explorer.git)
+   cd windows-explorer-web-app
+   ```
+2. Install dependencies:
+   ```bash
+   bun install
+   ```
 
-These features are curated to provide a seamless development experience from setup to deployment, ensuring that your Vuetify application is both powerful and maintainable.
+## Scripts
 
-## 💡 Usage
+The project includes several scripts to streamline development and deployment:
 
-This section covers how to start the development server and build your project for production.
+| Script       | Command                                                         | Description                       |
+| ------------ | --------------------------------------------------------------- | --------------------------------- |
+| `test`       | `bun run test`                                                  | Placeholder for running tests.    |
+| `dev`        | `bun run --watch src/index.ts`                                  | Starts the development server.    |
+| `db:up`      | `docker-compose --env-file .env -f db/docker-compose.yml up -d` | Starts the database using Docker. |
+| `db:down`    | `docker-compose --env-file .env -f db/docker-compose.yml down`  | Stops and removes the database.   |
+| `db:migrate` | `bunx prisma migrate dev`                                       | Applies database migrations.      |
+| `lint`       | `eslint . --fix`                                                | Lints and fixes code issues.      |
+| `format`     | `prettier --write .`                                            | Formats the codebase.             |
 
-### Starting the Development Server
+## Usage
 
-To start the development server with hot-reload, run the following command. The server will be accessible at [http://localhost:3000](http://localhost:3000):
+1. Start the database:
+   ```bash
+   bun run db:up
+   ```
+2. Apply database migrations:
+   ```bash
+   bun run db:migrate
+   ```
+3. Start the development server:
+   ```bash
+   bun run dev
+   ```
 
-```bash
-yarn dev
-```
+## Technologies Used
 
-(Repeat for npm, pnpm, and bun with respective commands.)
+- **Bun**: Fast JavaScript runtime.
+- **Prisma**: ORM for managing database schema and queries.
+- **PostgreSQL**: Database backend.
+- **Elysia**: Lightweight web framework.
+- **Winston**: Logging library.
+- **Zod**: Schema validation library.
 
-> Add NODE_OPTIONS='--no-warnings' to suppress the JSON import warnings that happen as part of the Vuetify import mapping. If you are on Node [v21.3.0](https://nodejs.org/en/blog/release/v21.3.0) or higher, you can change this to NODE_OPTIONS='--disable-warning=5401'. If you don't mind the warning, you can remove this from your package.json dev script.
+## Contributing
 
-### Building for Production
+1. Fork the repository.
+2. Create a feature branch:
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "Add your message here"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+5. Open a pull request.
 
-To build your project for production, use:
+## License
 
-```bash
-yarn build
-```
+This project is licensed under the MIT License. See the LICENSE file for details.
 
-(Repeat for npm, pnpm, and bun with respective commands.)
+## Acknowledgments
 
-Once the build process is completed, your application will be ready for deployment in a production environment.
-
-## 💪 Support Vuetify Development
-
-This project is built with [Vuetify](https://vuetifyjs.com/en/), a UI Library with a comprehensive collection of Vue components. Vuetify is an MIT licensed Open Source project that has been made possible due to the generous contributions by our [sponsors and backers](https://vuetifyjs.com/introduction/sponsors-and-backers/). If you are interested in supporting this project, please consider:
-
-- [Requesting Enterprise Support](https://support.vuetifyjs.com/)
-- [Sponsoring John on Github](https://github.com/users/johnleider/sponsorship)
-- [Sponsoring Kael on Github](https://github.com/users/kaelwd/sponsorship)
-- [Supporting the team on Open Collective](https://opencollective.com/vuetify)
-- [Becoming a sponsor on Patreon](https://www.patreon.com/vuetify)
-- [Becoming a subscriber on Tidelift](https://tidelift.com/subscription/npm/vuetify)
-- [Making a one-time donation with Paypal](https://paypal.me/vuetify)
-
-## 📑 License
-[MIT](http://opensource.org/licenses/MIT)
-
-Copyright (c) 2016-present Vuetify, LLC
+- [Bun](https://bun.sh/)
+- [Prisma](https://www.prisma.io/)
+- [Elysia](https://elysiajs.com/)
