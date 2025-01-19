@@ -1,99 +1,149 @@
-# Windows Explorer Web App
+# vue-windows-explorer
 
-## Overview
-
-The **Windows Explorer Web App** is a web-based application designed to replicate the functionality of a file explorer in a browser environment. This project is built with modern technologies such as **Bun**, **Prisma**, **Elysia**, and **Docker**.
+A Vue 3 project inspired by Windows Explorer, designed to manage and display hierarchical data in a user-friendly interface. Built with Vuetify, Vite, and modern JavaScript tooling.
 
 ## Features
 
-- Lightweight and fast execution with Bun.
-- Database integration using Prisma and PostgreSQL.
-- Swagger documentation for API endpoints.
-- Enhanced logging with Winston.
-- Input validation using Zod.
-- CORS and error handling with Elysia middleware.
+- **Modern UI**: Built with Vuetify for responsive and accessible design.
+- **Hierarchical Data Management**: Intuitive navigation for tree-like structures.
+- **Fast and Efficient**: Powered by Vite for lightning-fast development and builds.
+- **State Management**: Pinia for managing application state.
+- **Linting**: ESLint integration for clean and consistent code.
+- **Axios for API calls**: Simplifies HTTP requests.
 
-## Installation
+## Project Setup
 
 ### Prerequisites
 
-- [Bun](https://bun.sh/) installed on your system.
-- [Docker](https://www.docker.com/) installed and running.
-- A `.env` file with the required environment variables for the database setup.
+- Node.js >= 16
+- npm or Bun
 
-### Steps
+### Installation
 
 1. Clone the repository:
+
    ```bash
-   git clone [text](https://github.com/rizkiwhy/vue-windows-explorer.git)
-   cd windows-explorer-web-app
+   git clone <repository_url>
+   cd vue-windows-explorer
    ```
+
 2. Install dependencies:
+   Using npm:
+   ```bash
+   npm install
+   ```
+   Or using Bun:
    ```bash
    bun install
    ```
 
-## Scripts
+### Development
 
-The project includes several scripts to streamline development and deployment:
+Start the development server:
 
-| Script       | Command                                                         | Description                       |
-| ------------ | --------------------------------------------------------------- | --------------------------------- |
-| `test`       | `bun run test`                                                  | Placeholder for running tests.    |
-| `dev`        | `bun run --watch src/index.ts`                                  | Starts the development server.    |
-| `db:up`      | `docker-compose --env-file .env -f db/docker-compose.yml up -d` | Starts the database using Docker. |
-| `db:down`    | `docker-compose --env-file .env -f db/docker-compose.yml down`  | Stops and removes the database.   |
-| `db:migrate` | `bunx prisma migrate dev`                                       | Applies database migrations.      |
-| `lint`       | `eslint . --fix`                                                | Lints and fixes code issues.      |
-| `format`     | `prettier --write .`                                            | Formats the codebase.             |
+```bash
+npm run dev
+```
 
-## Usage
+Or with Bun:
 
-1. Start the database:
-   ```bash
-   bun run db:up
-   ```
-2. Apply database migrations:
-   ```bash
-   bun run db:migrate
-   ```
-3. Start the development server:
-   ```bash
-   bun run dev
-   ```
+```bash
+bun dev
+```
+
+The app will be available at `http://localhost:5173`.
+
+### Build
+
+To build the project for production:
+
+```bash
+npm run build
+```
+
+The built files will be in the `dist/` directory.
+
+### Preview
+
+To preview the production build:
+
+```bash
+npm run preview
+```
+
+### Linting
+
+To lint and fix code issues:
+
+```bash
+npm run lint
+```
 
 ## Technologies Used
 
-- **Bun**: Fast JavaScript runtime.
-- **Prisma**: ORM for managing database schema and queries.
-- **PostgreSQL**: Database backend.
-- **Elysia**: Lightweight web framework.
-- **Winston**: Logging library.
-- **Zod**: Schema validation library.
+- **Vue 3**: Core framework for building the application.
+- **Vuetify**: Material Design Component Framework.
+- **Vite**: Next-generation frontend tooling for fast builds and HMR.
+- **Pinia**: Store library for Vue.
+- **Vue Router**: Client-side routing.
+- **Sass**: CSS preprocessor for styling.
+- **Axios**: Promise-based HTTP client.
+- **Unplugin Libraries**: Auto-imports for components and fonts.
 
-## Contributing
+## Folder Structure
 
-1. Fork the repository.
-2. Create a feature branch:
-   ```bash
-   git checkout -b feature/your-feature-name
-   ```
-3. Commit your changes:
-   ```bash
-   git commit -m "Add your message here"
-   ```
-4. Push to the branch:
-   ```bash
-   git push origin feature/your-feature-name
-   ```
-5. Open a pull request.
+- `src/`: Application source code.
+  - `components/`: Reusable Vue components.
+  - `layouts/`: Layout templates.
+  - `router/`: Vue Router configuration.
+  - `store/`: Pinia store definitions.
+  - `views/`: Page views.
+- `public/`: Static assets.
+- `dist/`: Built files (generated after running `npm run build`).
+
+## Dependencies
+
+**Main Dependencies:**
+
+- Vue 3
+- Vuetify
+- Vue Router
+- Pinia
+- Axios
+
+**Development Dependencies:**
+
+- Vite
+- ESLint
+- Sass (Dart Sass & Sass Embedded)
+- Unplugin Libraries for automation
+- Plugins for Vue and Vuetify
 
 ## License
 
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the `LICENSE` file for details.
 
-## Acknowledgments
+## Contributing
 
-- [Bun](https://bun.sh/)
-- [Prisma](https://www.prisma.io/)
-- [Elysia](https://elysiajs.com/)
+Contributions are welcome! Feel free to submit issues and pull requests.
+
+### Steps to Contribute
+
+1. Fork the repository.
+2. Create a new branch:
+   ```bash
+   git checkout -b feature/your-feature
+   ```
+3. Make your changes and commit them:
+   ```bash
+   git commit -m "Add your feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/your-feature
+   ```
+5. Open a pull request on GitHub.
+
+---
+
+Thank you for checking out **vue-windows-explorer**! If you have any questions, feel free to reach out.
