@@ -23,7 +23,7 @@ A Vue 3 project inspired by Windows Explorer, designed to manage and display hie
 1. Clone the repository:
 
    ```bash
-   git clone [text](https://github.com/rizkiwhy/vue-windows-explorer.git)
+   git clone https://github.com/rizkiwhy/vue-windows-explorer.git
    cd vue-windows-explorer
    ```
 
